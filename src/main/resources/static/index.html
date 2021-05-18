@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Postal Details</title>
+</head>
+
+<script src="script.js"></script>
+<body>
+
+<div class="partition div1" style="width: 45%">
+    <form action="/getPinCode" method="get">
+        <input type="text" id="area" name="area" placeholder="Area">
+        <input type="text" id="district" name="district" placeholder="District (Optional)">
+        <input type="button" onclick="getPinCode()" value="Get Pincode(s)" id="submit">
+    </form>
+    <table id="myTable1">
+    </table>
+</div>
+
+<div class="partition div2" style="width: 45%">
+    <form action="/getPostOfficeNames" method="get">
+        <input type="text" id="pinCode" name="pinCode" placeholder="Pincode">
+        <input type="button" onclick="getPostOfficeNames()" value="Get Area(s)" id="submit">
+    </form>
+    <table id="myTable2">
+    </table>
+</div>
+
+
+<table id="myTable">
+</table>
+
+</body>
+</html>
