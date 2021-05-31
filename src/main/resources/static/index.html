@@ -1,36 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <script>
+    	 	function color_change(){
+    	 		// on click change the colour of tab bar..
+    	 		document.getElementById("btn2").style.backgroundImage = "linear-gradient(beige,white)";
+    	 		document.getElementById("btn1").style.backgroundImage = "linear-gradient(cyan,pink)";
+
+    	 		// on click display the area code fields but not pincode field..
+    	 		document.getElementById("location").style.display = "block";
+    	 		document.getElementById("pincode").style.display = "none";
+
+    	 	}
+    	 	function backColor_change(){
+    	 		// on click change the colour of tab bar..
+    	 		document.getElementById("btn1").style.backgroundImage = "linear-gradient(beige,white)";
+    	 		document.getElementById("btn2").style.backgroundImage = "linear-gradient(cyan,pink)";
+
+    	 		// on click display the area code fields but not pincode field..
+    	 		document.getElementById("pincode").style.display = "block";
+    	 		document.getElementById("location").style.display = "none";
+
+    	 	}
+    	 </script>
+    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="UTF-8">
-    <title>Postal Details</title>
+
+    <title>Addresses</title>
 </head>
-
-<script src="script.js"></script>
 <body>
+<header id="body-header">
+    <h3>Find Address through Area and Pincode</h3>
+</header>
+<main>
+    <section id="box" class="parallax">
+        <form action="getPincode" method="get">
 
-<div class="partition div1" style="width: 45%">
-    <form action="/getPinCode" method="get">
-        <input type="text" id="area" name="area" placeholder="Area">
-        <input type="text" id="district" name="district" placeholder="District (Optional)">
-        <input type="button" onclick="getPinCode()" value="Get Pincode(s)" id="submit">
-    </form>
-    <table id="myTable1">
-    </table>
-</div>
+            <!-- Define the tab button. Give the hyperlink of area and pinocde fields and define on click button function of javascript -->
+            <div id="GetData">
+                <a href="#location"><button type="button" id="btn1" onclick="color_change()" class="btn"><b>Give Area</b></button></a>
+                <a href="#pincode"><button type="button" id="btn2" onclick="backColor_change()" class="btn"><b>Give Pincode</b></button></a>
+            </div>
 
-<div class="partition div2" style="width: 45%">
-    <form action="/getPostOfficeNames" method="get">
-        <input type="text" id="pinCode" name="pinCode" placeholder="Pincode">
-        <input type="button" onclick="getPostOfficeNames()" value="Get Area(s)" id="submit">
-    </form>
-    <table id="myTable2">
-    </table>
-</div>
+            <!-- Give the input field of area and define the button to get the address details.. -->
+            <div id="location" class="find">
+                <!-- <h4>Find Pincode(s) with Area Details</h4> -->
+                <input type="text" id="areaText" name="area" placeholder="      Area Here..." required>
+                <input type="text" id="districtText" name="district" placeholder="District (Optional)">
+                <input type="button" class="detail-btn" onclick="getPinCode()" value="Get Pincode(s)" id="pincodeButton">
+            </div>
 
+            <!-- Give the input field of pincode and define the button to get the adress details -->
+            <div id="pincode" class="find">
+                <!-- <h4>Find Area(s) Details with Pincode</h4> -->
+                <input type="text" id="pinCodeText" name="pinCode" placeholder="  Pincode Here..." required>
+                <input type="button" class="detail-btn" onclick="getPostOfficeNames()" value="Get Area(s)" id="poButton">
+            </div>
 
-<table id="myTable">
-</table>
+            <!-- Obtain the list by defining table -->
+            <div id="list">
+                <table id="myTable">
+                </table>
+            </div>
+        </form>
+    </section>
+
+</main>
 
 </body>
 </html>

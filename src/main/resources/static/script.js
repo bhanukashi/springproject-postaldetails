@@ -1,8 +1,8 @@
 function getPinCode () {
     var request = new XMLHttpRequest()
 
-    var area = document.getElementById("area").value
-    var district = document.getElementById("district").value
+    var area = document.getElementById("areaText").value
+    var district = document.getElementById("districtText").value
 
     var url
 
@@ -16,11 +16,11 @@ function getPinCode () {
     // Open a new connection, using the GET request on the URL endpoint
     request.open('GET', url, true)
 
-    var table = document.getElementById("myTable1")
+    var table = document.getElementById("myTable")
     table.innerHTML = ""
 
     request.onload = function () {
-        // Begin accessing JSON data here
+        // Begin accessing JSON data here   
         var response = JSON.parse(this.response)
         for (var i = response.length - 1; i >= 0; i--) {
             var row = table.insertRow(0);
@@ -35,13 +35,13 @@ function getPinCode () {
 function getPostOfficeNames() {
     var request = new XMLHttpRequest()
 
-    var pin = document.getElementById("pinCode").value
+    var pin = document.getElementById("pinCodeText").value
     var url = '/getPostOfficeNames/?pinCode=' + pin
 
     // Open a new connection, using the GET request on the URL endpoint
     request.open('GET', url, true)
 
-    var table = document.getElementById("myTable2")
+    var table = document.getElementById("myTable")
     table.innerHTML = ""
 
     request.onload = function () {
